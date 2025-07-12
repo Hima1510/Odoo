@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Status - Skill Swap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .gradient-background2 {
+            background: linear-gradient(300deg, #774360, #E7AB79, #D4ADFC);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .status-card {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        .status-card:hover {
+            transform: translateY(-5px);
+        }
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .skill-badge {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .progress {
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light gradient-background2">
+        <div class="container">
+            <a class="navbar-brand me-2" href="index.html">
+                <img src="./images/book.png" height="32" alt="Skill Swap Logo" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarButtons">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">SKILL SWAP</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> John Doe
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="swap-request.html">Swap Requests</a></li>
+                            <li><a class="dropdown-item" href="swap-status.html">Swap Status</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <a href="https://github.com/Skill-Swap-Network" class="btn btn-light px-3 ms-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Swap Status Content -->
+    <div class="container py-5">
+        <h2 class="mb-4">Swap Status</h2>
+        <p class="text-muted mb-4">Track the progress of your active skill exchanges</p>
+
+        <ul class="nav nav-tabs" id="statusTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#teaching">Teaching</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#learning">Learning</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#completed">Completed</a>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-4">
+            <!-- Teaching Tab -->
+            <div class="tab-pane fade show active" id="teaching">
+                <!-- Teaching Swap 1 -->
+                <div class="status-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="emma.png" alt="User" class="user-avatar me-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-0">Emma Wilson</h5>
+                                <span class="status-badge bg-success text-white">Active</span>
+                            </div>
+                            <p class="text-muted mb-2">Teaching <strong>Web Development</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary skill-badge">HTML/CSS</span>
+                                <span class="badge bg-primary skill-badge">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Progress</span>
+                            <span>2 of 6 sessions completed</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 33%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">Next session: Tomorrow, 3 PM</small>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2">Details</button>
+                            <button class="btn btn-outline-secondary btn-sm">Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teaching Swap 2 -->
+                <div class="status-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="sneha.png" alt="User" class="user-avatar me-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-0">Sneha Sinha</h5>
+                                <span class="status-badge bg-success text-white">Active</span>
+                            </div>
+                            <p class="text-muted mb-2">Teaching <strong>Data Structures</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary skill-badge">Algorithms</span>
+                                <span class="badge bg-primary skill-badge">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Progress</span>
+                            <span>4 of 8 sessions completed</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">Next session: Friday, 2 PM</small>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2">Details</button>
+                            <button class="btn btn-outline-secondary btn-sm">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Tab -->
+            <div class="tab-pane fade" id="learning">
+                <!-- Learning Swap 1 -->
+                <div class="status-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="aarav.png" alt="User" class="user-avatar me-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-0">Aarav Sharma</h5>
+                                <span class="status-badge bg-success text-white">Active</span>
+                            </div>
+                            <p class="text-muted mb-2">Learning <strong>UI Design</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary skill-badge">Figma</span>
+                                <span class="badge bg-primary skill-badge">Adobe XD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Progress</span>
+                            <span>3 of 5 sessions completed</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">Next session: Wednesday, 4 PM</small>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2">Details</button>
+                            <button class="btn btn-outline-secondary btn-sm">Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Swap 2 -->
+                <div class="status-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="sarah.png" alt="User" class="user-avatar me-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-0">Sarah Miller</h5>
+                                <span class="status-badge bg-success text-white">Active</span>
+                            </div>
+                            <p class="text-muted mb-2">Learning <strong>Photography</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary skill-badge">Portrait</span>
+                                <span class="badge bg-primary skill-badge">Lightroom</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Progress</span>
+                            <span>1 of 4 sessions completed</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 25%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">Next session: Sunday, 11 AM</small>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2">Details</button>
+                            <button class="btn btn-outline-secondary btn-sm">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Tab -->
+            <div class="tab-pane fade" id="completed">
+                <!-- Completed Swap 1 -->
+                <div class="status-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="alex.png" alt="User" class="user-avatar me-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-0">Alex Turner</h5>
+                                <span class="status-badge bg-secondary text-white">Completed</span>
+                            </div>
+                            <p class="text-muted mb-2">Learned <strong>Graphic Design</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary skill-badge">Illustrator</span>
+                                <span class="badge bg-primary skill-badge">Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Progress</span>
+                            <span>6 of 6 sessions completed</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                            <span class="ms-2">4.5</span>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2">Details</button>
+                            <button class="btn btn-outline-success btn-sm">Swap Again</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Swap 2 -->
+                <div class="status-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="emma.png" alt="User" class="user-avatar me-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-0">Emma Wilson</h5>
+                                <span class="status-badge bg-secondary text-white">Completed</span>
+                            </div>
+                            <p class="text-muted mb-2">Learned <strong>Guitar</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary skill-badge">Chords</span>
+                                <span class="badge bg-primary skill-badge">Music Theory</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Progress</span>
+                            <span>8 of 8 sessions completed</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <span class="ms-2">5.0</span>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2">Details</button>
+                            <button class="btn btn-outline-success btn-sm">Swap Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer class="py-2 my-2">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-body-secondary">Profile</a></li>
+                <li class="nav-item"><a href="swap-request.html" class="nav-link px-2 text-body-secondary">Swap Requests</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2023 Skill-Swap-Network</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple functionality for buttons
+        document.querySelectorAll('.btn-outline-primary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const userName = this.closest('.status-card').querySelector('h5').textContent;
+                const skill = this.closest('.status-card').querySelector('strong').textContent;
+                alert(`Details for your swap with ${userName} (${skill}) would show here.`);
+            });
+        });
+
+        document.querySelectorAll('.btn-outline-secondary').forEach(btn => {
+            if (btn.textContent.includes('Message')) {
+                btn.addEventListener('click', function() {
+                    const userName = this.closest('.status-card').querySelector('h5').textContent;
+                    alert(`Messaging interface with ${userName} would open here.`);
+                });
+            }
+        });
+
+        document.querySelectorAll('.btn-outline-success').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const userName = this.closest('.status-card').querySelector('h5').textContent;
+                alert(`New swap request sent to ${userName}!`);
+            });
+        });
+    </script>
+</body>
+</html>
