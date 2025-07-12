@@ -4,9 +4,12 @@ Users can offer their own skills, request others, schedule availability, and eng
 
 Team Details:
 
- Name                           Role                                              
+ Name:                           Role                                              
 
- Hima Mehta                     Backend
- Kairavi Padhariya              Backend(API)
- Akshara Pandya                 UI/UX Design      
- Chandni Kothari                Frontend
+ Hima Mehta:                     Backend
+ 
+ Kairavi Padhariya:              Backend(API)
+ 
+ Akshara Pandya:                 UI/UX Design 
+ 
+ Chandni Kothari:                Frontend
