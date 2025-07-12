@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Profiles - Skill Swap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .gradient-background2 {
+            background: linear-gradient(300deg, #774360, #E7AB79, #D4ADFC);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .profile-card {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .skill-badge {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .search-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light gradient-background2">
+        <div class="container">
+            <a class="navbar-brand me-2" href="index.html">
+                <img src="./images/book.png" height="32" alt="Skill Swap Logo" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarButtons">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">SKILL SWAP</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> My Profile
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="swap-request.html">Swap Requests</a></li>
+                            <li><a class="dropdown-item" href="swap-status.html">Swap Status</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <a href="https://github.com/Skill-Swap-Network" class="btn btn-light px-3 ms-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Public Profiles Content -->
+    <div class="container py-5">
+        <h2 class="mb-4">Browse Public Profiles</h2>
+        <p class="text-muted mb-4">Connect with others to exchange skills and knowledge</p>
+        
+        <!-- Search Filters -->
+        <div class="search-container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="skillFilter" class="form-label">Filter by Skill</label>
+                    <select class="form-select" id="skillFilter">
+                        <option selected>All Skills</option>
+                        <option>Programming</option>
+                        <option>Design</option>
+                        <option>Languages</option>
+                        <option>Music</option>
+                        <option>Photography</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="locationFilter" class="form-label">Filter by Location</label>
+                    <select class="form-select" id="locationFilter">
+                        <option selected>All Locations</option>
+                        <option>New York</option>
+                        <option>London</option>
+                        <option>Banglore</option>
+                        <option>Amsterdam</option>
+                        <option>Toronto</option>
+                        <option>Remote</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-dark gradient-background2 border-0">Apply Filters</button>
+        </div>
+
+        <!-- Public Profiles Grid -->
+        <div class="row">
+            <!-- Profile 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="profile-card p-4 text-center">
+                    <img src="aarav.png" alt="Profile" class="profile-img mb-3">
+                    <h4>Aarav Sharma</h4>
+                    <p class="text-muted">UI/UX Designer</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary skill-badge">Figma</span>
+                        <span class="badge bg-primary skill-badge">Adobe XD</span>
+                        <span class="badge bg-primary skill-badge">User Research</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark skill-badge">Python</span>
+                        <span class="badge bg-warning text-dark skill-badge">Data Analysis</span>
+                    </div>
+                    <p class="small text-muted mb-3"><i class="bi bi-geo-alt"></i> Banglore, IN</p>
+                    <button class="btn btn-outline-dark w-100">Request Swap</button>
+                </div>
+            </div>
+
+            <!-- Profile 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="profile-card p-4 text-center">
+                    <img src="michael.png" alt="Profile" class="profile-img mb-3">
+                    <h4>Michael Chen</h4>
+                    <p class="text-muted">Software Engineer</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary skill-badge">JavaScript</span>
+                        <span class="badge bg-primary skill-badge">React</span>
+                        <span class="badge bg-primary skill-badge">Node.js</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark skill-badge">Spanish</span>
+                        <span class="badge bg-warning text-dark skill-badge">Photography</span>
+                    </div>
+                    <p class="small text-muted mb-3"><i class="bi bi-geo-alt"></i> New York, NY</p>
+                    <button class="btn btn-outline-dark w-100">Request Swap</button>
+                </div>
+            </div>
+
+            <!-- Profile 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="profile-card p-4 text-center">
+                    <img src="emma.png" alt="Profile" class="profile-img mb-3">
+                    <h4>Emma Wilson</h4>
+                    <p class="text-muted">Linguistics Student</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary skill-badge">Spanish</span>
+                        <span class="badge bg-primary skill-badge">French</span>
+                        <span class="badge bg-primary skill-badge">German</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark skill-badge">Web Development</span>
+                        <span class="badge bg-warning text-dark skill-badge">Data Science</span>
+                    </div>
+                    <p class="small text-muted mb-3"><i class="bi bi-geo-alt"></i> Amsterdam, NL</p>
+                    <button class="btn btn-outline-dark w-100">Request Swap</button>
+                </div>
+            </div>
+
+            <!-- Profile 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="profile-card p-4 text-center">
+                    <img src="sarah.png" alt="Profile" class="profile-img mb-3">
+                    <h4>Sarah Miller</h4>
+                    <p class="text-muted">Professional Photographer</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary skill-badge">Portrait Photography</span>
+                        <span class="badge bg-primary skill-badge">Photo Editing</span>
+                        <span class="badge bg-primary skill-badge">Lightroom</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark skill-badge">Python</span>
+                        <span class="badge bg-warning text-dark skill-badge">Automation</span>
+                    </div>
+                    <p class="small text-muted mb-3"><i class="bi bi-geo-alt"></i> Remote</p>
+                    <button class="btn btn-outline-dark w-100">Request Swap</button>
+                </div>
+            </div>
+
+            <!-- Profile 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="profile-card p-4 text-center">
+                    <img src="alex.png" alt="Profile" class="profile-img mb-3">
+                    <h4>Alex Turner</h4>
+                    <p class="text-muted">Graphic Designer</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary skill-badge">Illustrator</span>
+                        <span class="badge bg-primary skill-badge">Photoshop</span>
+                        <span class="badge bg-primary skill-badge">Branding</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark skill-badge">JavaScript</span>
+                        <span class="badge bg-warning text-dark skill-badge">Web Design</span>
+                    </div>
+                    <p class="small text-muted mb-3"><i class="bi bi-geo-alt"></i> Austin, TX</p>
+                    <button class="btn btn-outline-dark w-100">Request Swap</button>
+                </div>
+            </div>
+
+            <!-- Profile 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="profile-card p-4 text-center">
+                    <img src="sneha.png" alt="Profile" class="profile-img mb-3">
+                    <h4>Sneha Sinha</h4>
+                    <p class="text-muted">Music Teacher</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary skill-badge">Piano</span>
+                        <span class="badge bg-primary skill-badge">Guitar</span>
+                        <span class="badge bg-primary skill-badge">Music Theory</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark skill-badge">Web Development</span>
+                        <span class="badge bg-warning text-dark skill-badge">App Development</span>
+                    </div>
+                    <p class="small text-muted mb-3"><i class="bi bi-geo-alt"></i> London, UK</p>
+                    <button class="btn btn-outline-dark w-100">Request Swap</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer class="py-2 my-2">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-body-secondary">My Profile</a></li>
+                <li class="nav-item"><a href="swap-request.html" class="nav-link px-2 text-body-secondary">Swap Requests</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2023 Skill-Swap-Network</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple functionality for the "Request Swap" buttons
+        document.querySelectorAll('.btn-outline-dark').forEach(button => {
+            button.addEventListener('click', function() {
+                const profileName = this.closest('.profile-card').querySelector('h4').textContent;
+                alert(`Swap request sent to ${profileName}! They'll respond soon.`);
+            });
+        });
+    </script>
+</body>
+</html>
