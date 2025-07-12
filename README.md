@@ -7,6 +7,6 @@ Team Details:
  Name                           Role                                              
 
  Hima Mehta                     Backend
- Kairavi Padhariya              
- Akshara Pandya                          
+ Kairavi Padhariya              Backend(API)
+ Akshara Pandya                 UI/UX Design      
  Chandni Kothari                Frontend
